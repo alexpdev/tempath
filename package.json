@@ -1,0 +1,15 @@
+{
+  "name": "testfiles",
+  "displayName": "testfiles",
+  "version": "0.1.0",
+  "description": "Temprorary Files and Directory for testing.",
+  "longDescription": "A couple of functions for automatically creating and removing temporary files and folders for testing purposes.",
+  "main": "index.html",
+  "keywords": ["Unit Tests", "Testing"],
+  "author": "alexpdev",
+  "url": "http://github.com/alexpdev/autotestpdir",
+  "files": ["main.js"],
+  "email": "alexpdev@protonmail.com",
+  "readme": "./README.md",
+  "license": "GNU LGPL v3"
+}
