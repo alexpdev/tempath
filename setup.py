@@ -18,28 +18,26 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ############################################################################
 
-
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, find_namespace_packages
 import json
 
 INFO = json.load(open('./package.json'))
 
-with open("README.md", encoding="UTF-8") as readme:
-    long_description = readme.read()
+def readme():
+    with open("README.md", encoding="UTF-8") as fd:
+        long_description = fd.read()
+    return long_description
 
 setup(
     name=INFO['name'],
     version=INFO['version'],
     description=INFO['description'],
-    long_description=long_description,
+    long_description=readme(),
+    long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
     ],
@@ -47,10 +45,13 @@ setup(
     author=INFO["author"],
     author_email=INFO["email"],
     url=INFO["url"],
-    project_urls={"Source Code": "https://github.com/alexpdev/??????"},
+    project_urls={"Source Code": "https://github.com/alexpdev/autotestdir"},
     license=INFO["license"],
     packages=find_packages(),
+    tests_require=['pytest'],
+    test_suite='pytest',
     include_package_data=True,
     setup_requires=["setuptools"],
     zip_safe=False,
+    python_requires='>=3.1',
 )
