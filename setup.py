@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ############################################################################
 
-from setuptools import setup, find_packages, find_namespace_packages
+from setuptools import setup, find_packages
 import json
 
 INFO = json.load(open('./package.json'))
@@ -35,6 +35,17 @@ setup(
     long_description=readme(),
     long_description_content_type="text/markdown",
     classifiers=[
+        "Programming Language :: Python :: 3.0",
+        "Programming Language :: Python :: 3.1",
+        "Programming Language :: Python :: 3.2",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Development Status :: 3 - Alpha",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
@@ -45,13 +56,12 @@ setup(
     author=INFO["author"],
     author_email=INFO["email"],
     url=INFO["url"],
-    project_urls={"Source Code": "https://github.com/alexpdev/autotestdir"},
+    project_urls={"Source Code": "https://github.com/alexpdev/tempath"},
     license=INFO["license"],
-    packages=find_packages(),
-    tests_require=['pytest'],
-    test_suite='pytest',
+    packages=find_packages(exclude=["env"]),
     include_package_data=True,
-    setup_requires=["setuptools"],
+    tests_require=['pytest'],
+    setup_requires=["setuptools", 'wheel'],
     zip_safe=False,
-    python_requires='>=3.1',
+    test_suite='complete',
 )
