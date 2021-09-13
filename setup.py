@@ -58,7 +58,7 @@ setup(
     url=INFO["url"],
     project_urls={"Source Code": "https://github.com/alexpdev/tempath"},
     license=INFO["license"],
-    packages=find_packages(exclude=["env"]),
+    packages=find_packages(exclude=["env","tests"]),
     include_package_data=True,
     tests_require=['pytest'],
     setup_requires=["setuptools", 'wheel'],
