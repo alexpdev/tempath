@@ -1,11 +1,11 @@
 {
-  "name": "autotestdir",
-  "displayName": "AutoTestDir",
+  "name": "tempath",
+  "displayName": "Temp Paths",
   "version": "0.1.0",
   "description": "Auto creates and removes files and folders for testing.",
   "keywords": ["Unit Tests", "Testing", "filesystem", "automation"],
   "author": "alexpdev",
-  "url": "http://github.com/alexpdev/autotestpdir",
+  "url": "http://github.com/alexpdev/tempath",
   "email": "alexpdev@protonmail.com",
   "readme": "./README.md",
   "license": "GNU LGPL v3"
