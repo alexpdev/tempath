@@ -15,7 +15,7 @@ def test_autodir():
     assert os.path.exists(fd)
 
 def test_autofile_filecount():
-    fd = autodir(0, 2)
+    fd = autodir(folders=0, files=2)
     size = len(os.listdir(fd))
     assert size == 2
 
@@ -28,18 +28,18 @@ def test_autofile():
 
 def test_autofile_size_10():
     kb = 1 << 10
-    fd = autofile(kb)
+    fd = autofile(size=kb)
     size = os.path.getsize(fd)
     assert size == kb
 
 def test_autofile_size_16():
     kb = 1 << 16
-    fd = autofile(kb)
+    fd = autofile(size=kb)
     size = os.path.getsize(fd)
     assert size == kb
 
 def test_autofile_size_1M():
     kb = 1 << 20
-    fd = autofile(kb)
+    fd = autofile(size=kb)
     size = os.path.getsize(fd)
     assert size == kb
