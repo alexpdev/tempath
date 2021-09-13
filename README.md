@@ -29,7 +29,6 @@ Using git:
 git clone https://github.com/alexpdev/tempath.git
 ```
 
-
 The full API includes many other functions and classes as well.
 See docs for more full API.
 

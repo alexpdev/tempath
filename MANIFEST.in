@@ -1,11 +1,8 @@
 include LICENSE
 include README.md
-include tox.ini
-include setup.cfg
 
-recursive-include src *
 recursive-include tests *
-recursive-exclude * __pycache__
-global-exclude * *.py[cod]
+recursive-exclude __pycache__
+recursive-exclude * *.py[co]
 
 recursive-include docs *.rst Makefile *.jpg *.png *.gif *.json *.md

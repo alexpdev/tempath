@@ -1,7 +1,7 @@
 {
   "name": "tempath",
   "displayName": "Temp Paths",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Auto creates and removes files and folders for testing.",
   "keywords": ["Unit Tests", "Testing", "filesystem", "automation"],
   "author": "alexpdev",
