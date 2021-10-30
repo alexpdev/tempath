@@ -1,45 +1,31 @@
 import os
 import pytest
-from tempath import autodir, autofile
+import tempath
+
+@pytest.mark.parametrize("size", [20, 280000, 25, 10000000])
+def test_basicconfig(size):
+    tempath.basicconfig(
+        root_dir=None,
+        min_file_size=None,
+        max_file_size=size)
+    assert tempath.Register.config["max_file_size"] == size
 
 
-@pytest.fixture
-def ten():
-    return 10
+def test_tempdir1():
+    path = tempath.temp1()
+    assert os.path.exists(path)
 
-def test_ten(ten):
-    assert ten > 5
 
-def test_autodir():
-    fd = autodir()
-    assert os.path.exists(fd)
+def test_tempdir2():
+    path = tempath.temp2()
+    assert os.path.exists(path)
 
-def test_autofile_filecount():
-    fd = autodir(folders=0, files=2)
-    size = len(os.listdir(fd))
-    assert size == 2
 
-def test_ten(ten):
-    assert ten > 5
+def test_tempdir3():
+    path = tempath.temp3()
+    assert os.path.exists(path)
 
-def test_autofile():
-    fd = autofile()
-    assert os.path.exists(fd)
 
-def test_autofile_size_10():
-    kb = 1 << 10
-    fd = autofile(size=kb)
-    size = os.path.getsize(fd)
-    assert size == kb
-
-def test_autofile_size_16():
-    kb = 1 << 16
-    fd = autofile(size=kb)
-    size = os.path.getsize(fd)
-    assert size == kb
-
-def test_autofile_size_1M():
-    kb = 1 << 20
-    fd = autofile(size=kb)
-    size = os.path.getsize(fd)
-    assert size == kb
+def test_tempdir4():
+    path = tempath.temp4()
+    assert os.path.exists(path)
