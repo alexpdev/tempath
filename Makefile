@@ -45,7 +45,7 @@ clean-build: ## remove build artifacts
 
 prereq: ## install prereqs
 	python -m pip install --upgrade pip
-	pip install --upgrade coverage pytest pytest-cov twine setuptools wheel
+	pip install --upgrade coverage pytest pytest-cov twine setuptools wheel black
 
 test: ## run tests quickly with the default Python
 	pytest tests
@@ -56,6 +56,8 @@ coverage: ## check code coverage quickly with the default Python
 	coverage xml -o coverage.xml
 
 push: ## push to remote
+	black tempath
+	black tests
 	git add .
 	git commit -m "$m"
 	git push

@@ -20,8 +20,6 @@ def rmpath(path):
     return True
 
 
-
-
 class Register:
 
     paths = []
@@ -41,6 +39,7 @@ def reg(func):
     def wrapper(path, *args, **kwargs):
         Register.include(path)
         return func(path, *args, **kwargs)
+
     return wrapper
 
 
@@ -49,7 +48,7 @@ def basicconfig(max_file_size=None, min_file_size=None, root_dir=None):
     config = {
         "max_file_size": max_file_size,
         "min_file_size": min_file_size,
-        "root_dir": root_dir
+        "root_dir": root_dir,
     }
     if not root_dir:
         test = os.path.join(os.curdir, "test")
@@ -77,6 +76,7 @@ def config(func):
             basicconfig()
         assert hasattr(Register, "config")
         return func(*args, **kwargs)
+
     return wrapper
 
 
@@ -88,12 +88,13 @@ def _fixedline():
 @reg
 def fillfile(path, size):
     line = _fixedline()
-    size = size if size > 28 else 2**size
+    size = size if size > 28 else 2 ** size
     with open(path, "wb") as fd:
         while size > 0:
             fd.write(line)
             size -= len(line)
     return path
+
 
 @reg
 def makedir(path):
@@ -107,14 +108,14 @@ def random_size():
     min_file = Register.config["min_file_size"]
     if not max_file or not min_file:
         if not max_file and not min_file:
-            max_file = Register.config["max_file_size"] = 2**28
-            min_file = Register.config["min_file_size"] = 2**13
+            max_file = Register.config["max_file_size"] = 2 ** 28
+            min_file = Register.config["min_file_size"] = 2 ** 13
         elif not max_file:
             if min_file > 28:
-                max_file = Register.config["max_file_size"] = 2**28
+                max_file = Register.config["max_file_size"] = 2 ** 28
         elif not min_file:
             if max_file > 28:
-                min_file = Register.config["min_file_size"] = 2**13
+                min_file = Register.config["min_file_size"] = 2 ** 13
     size = random.randint(min_file, max_file + 1)
     return size
 
@@ -150,25 +151,19 @@ def temp1():
 
 
 def temp2():
-    structure = {
-        "dir1" : {
-            "dir2": ["file1", "file2"],
-            "dir3": ["file3", "file4"]
-        }
-    }
+    structure = {"dir1": {"dir2": ["file1", "file2"], "dir3": ["file3", "file4"]}}
     return construct("tempdir2", structure)
 
 
 def temp3():
-    structure = {
-        "dir1": ["file1", "file2", "file3", "file4", "file5"]
-    }
+    structure = {"dir1": ["file1", "file2", "file3", "file4", "file5"]}
     return construct("temdir3", structure)
 
 
 def temp4():
-    structure = {"dir1" : {"dir2": {"dir3": ["file1"]}}}
+    structure = {"dir1": {"dir2": {"dir3": ["file1"]}}}
     return construct("tempdir4", structure)
+
 
 @atexit.register
 def cleanup():
