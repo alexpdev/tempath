@@ -13,7 +13,7 @@ that will be automatically removed at runtime end.
 
 * Python3 installed and enabled
 
-## Installing PyBen
+## Installing Tempath
 
 To install Tempath, follow these steps:
 

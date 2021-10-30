@@ -62,7 +62,7 @@ push: ## push to remote
 	git commit -m "$m"
 	git push
 
-release: test coverage push dist## package and upload a release
+release: test coverage push build ## package and upload a release
 	twine upload dist/*
 
 build: prereq clean ## builds source and wheel package
