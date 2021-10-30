@@ -67,14 +67,16 @@ def basicconfig(max_file_size=None, min_file_size=None, root_dir=None):
         makedir(path)
         root_dir = path
     Register.config = config
-    assert os.path.exists(config["root_dir"])
+    if not os.path.exists(config["root_dir"]):
+        raise AssertionError
 
 
 def config(func):
     def wrapper(*args, **kwargs):
         if not hasattr(Register, "config"):
             basicconfig()
-        assert hasattr(Register, "config")
+        if not hasattr(Register, "config"):
+            raise AssertionError
         return func(*args, **kwargs)
 
     return wrapper
